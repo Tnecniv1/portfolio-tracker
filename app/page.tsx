@@ -7,6 +7,14 @@ export const revalidate = 0
 
 const MEDALS = ['🥇', '🥈', '🥉']
 
+function monthsSince(since: string | null): string {
+  if (!since) return '—'
+  const start = new Date(since)
+  const now = new Date()
+  const months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth())
+  return `${months} mois`
+}
+
 async function getMembres() {
   const { data: membres } = await supabaseAdmin
     .from('membres')
@@ -127,7 +135,7 @@ export default async function ClassementPage() {
                     <td className={`px-4 py-3.5 text-right font-medium ${colorClass(m.last_twr)}`}>
                       {formatPct(m.last_twr)}
                     </td>
-                    <td className="px-4 py-3.5 text-right text-gray-400">{m.depuis_moment ?? '—'}</td>
+                    <td className="px-4 py-3.5 text-right text-gray-400">{monthsSince(m.depuis)}</td>
                   </tr>
                 </Link>
               ))}
