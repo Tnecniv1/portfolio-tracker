@@ -72,6 +72,16 @@ export default async function ClassementPage() {
   return (
     <main className="min-h-screen bg-white">
       <div className="max-w-4xl mx-auto px-4 py-10">
+        {/* CTA vente */}
+        <div className="flex justify-end mb-6">
+          <Link
+            href="/vente"
+            className="bg-[#1A1916] text-white text-sm font-medium px-5 py-2.5 rounded-xl hover:bg-[#2d2c28] transition-colors"
+          >
+            Rejoindre l&apos;équipe →
+          </Link>
+        </div>
+
         {/* Summary cards */}
         <div className="flex items-center gap-3 mb-6">
           <div className="flex-1 rounded-xl border border-gray-100 bg-white px-8 py-6">
