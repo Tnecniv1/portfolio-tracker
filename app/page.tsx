@@ -22,6 +22,7 @@ async function getMembres() {
         .eq('membre_id', m.id)
         .not('valeur_ptf', 'is', null)
         .order('capital_investit', { ascending: false })
+        .order('created_at', { ascending: false })
         .limit(1)
 
       const { data: first } = await supabaseAdmin
