@@ -1,9 +1,9 @@
 import { supabaseAdmin } from '@/lib/supabase-server'
 import Link from 'next/link'
+import { formatEuro, formatPct, colorClass } from '@/lib/format'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
-import { formatEuro, formatPct, colorClass } from '@/lib/format'
 
 const MEDALS = ['🥇', '🥈', '🥉']
 
@@ -33,6 +33,13 @@ async function getMembres() {
         .order('created_at', { ascending: true })
         .limit(1)
 
+      const { data: lastFlux } = await supabaseAdmin
+        .from('flux_capital')
+        .select('capital_investit')
+        .eq('membre_id', m.id)
+        .order('capital_investit', { ascending: false })
+        .limit(1)
+
       const last = flux?.[0] ?? null
       return {
         ...m,
@@ -40,6 +47,7 @@ async function getMembres() {
         last_profit: last?.profit ?? null,
         last_roi: last?.roi ?? null,
         depuis_moment: first?.[0]?.moment ?? null,
+        last_capital: lastFlux?.[0]?.capital_investit ?? 0,
       }
     })
   )
@@ -50,7 +58,8 @@ async function getMembres() {
 export default async function ClassementPage() {
   const membres = await getMembres()
 
-  const totalProfit = membres.reduce((sum, m) => sum + (m.last_profit ?? 0), 0)
+  const totalInvesti = membres.reduce((s, m) => s + (m.last_capital ?? 0), 0)
+  const totalProfit  = membres.reduce((s, m) => s + (m.last_profit ?? 0), 0)
 
   const today = new Date().toLocaleDateString('fr-FR', {
     weekday: 'long',
@@ -68,12 +77,24 @@ export default async function ClassementPage() {
           <span className="text-sm text-gray-400 capitalize">{today}</span>
         </div>
 
-        {/* Total profit card */}
-        <div className="flex items-center justify-between mb-5 px-5 py-3 rounded-xl border border-gray-100 bg-[#F9FAFB]">
-          <span className="text-sm text-gray-500">Profit total généré</span>
-          <span className={`text-sm font-semibold ${colorClass(totalProfit)}`}>
-            {formatEuro(totalProfit)}
-          </span>
+        {/* Summary cards */}
+        <div className="flex items-center gap-3 mb-6">
+          <div className="flex-1 rounded-xl border border-gray-100 bg-white px-8 py-6">
+            <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">Total investi</p>
+            <p className="text-4xl font-semibold text-gray-900">{formatEuro(totalInvesti)}</p>
+          </div>
+
+          <span className="text-xl text-gray-300 font-light select-none">+</span>
+
+          <div className="flex-1 rounded-xl border border-gray-100 bg-white px-8 py-6">
+            <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">Profit total</p>
+            <p
+              className="text-4xl font-semibold"
+              style={{ color: totalProfit >= 0 ? '#1A7F5A' : '#DC2626' }}
+            >
+              {formatEuro(totalProfit)}
+            </p>
+          </div>
         </div>
 
         {/* Table */}
@@ -93,9 +114,7 @@ export default async function ClassementPage() {
             <tbody>
               {membres.map((m, i) => (
                 <Link key={m.id} href={`/analyse/${m.id}`} legacyBehavior>
-                  <tr
-                    className="border-b border-gray-50 cursor-pointer hover:bg-gray-50 transition-colors"
-                  >
+                  <tr className="border-b border-gray-50 cursor-pointer hover:bg-gray-50 transition-colors">
                     <td className="px-4 py-3.5 text-base">{MEDALS[i] ?? i + 1}</td>
                     <td className="px-4 py-3.5 font-medium text-gray-900">{m.pseudo ?? m.prenom}</td>
                     <td className="px-4 py-3.5 text-right text-gray-700">{formatEuro(m.richesse)}</td>
