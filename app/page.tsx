@@ -97,7 +97,7 @@ export default async function ClassementPage() {
                     className="border-b border-gray-50 cursor-pointer hover:bg-gray-50 transition-colors"
                   >
                     <td className="px-4 py-3.5 text-base">{MEDALS[i] ?? i + 1}</td>
-                    <td className="px-4 py-3.5 font-medium text-gray-900">{m.prenom}</td>
+                    <td className="px-4 py-3.5 font-medium text-gray-900">{m.pseudo ?? m.prenom}</td>
                     <td className="px-4 py-3.5 text-right text-gray-700">{formatEuro(m.richesse)}</td>
                     <td className={`px-4 py-3.5 text-right font-medium ${colorClass(m.last_profit)}`}>
                       {formatEuro(m.last_profit)}
