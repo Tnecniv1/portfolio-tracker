@@ -69,22 +69,9 @@ export default async function ClassementPage() {
   const totalInvesti = membres.reduce((s, m) => s + (m.last_capital ?? 0), 0)
   const totalProfit  = membres.reduce((s, m) => s + (m.last_profit ?? 0), 0)
 
-  const today = new Date().toLocaleDateString('fr-FR', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  })
-
   return (
     <main className="min-h-screen bg-white">
       <div className="max-w-4xl mx-auto px-4 py-10">
-        {/* Header */}
-        <div className="flex items-baseline justify-between mb-8">
-          <h1 className="text-2xl font-semibold tracking-tight text-gray-900">Classement</h1>
-          <span className="text-sm text-gray-400 capitalize">{today}</span>
-        </div>
-
         {/* Summary cards */}
         <div className="flex items-center gap-3 mb-6">
           <div className="flex-1 rounded-xl border border-gray-100 bg-white px-8 py-6">
@@ -151,8 +138,8 @@ export default async function ClassementPage() {
         </div>
 
         <div className="mt-4 text-right">
-          <Link href="/saisie" className="text-xs text-gray-300 hover:text-gray-500 transition-colors">
-            Saisie →
+          <Link href="/vente" className="text-xs text-gray-300 hover:text-gray-400">
+            Rejoindre →
           </Link>
         </div>
       </div>
