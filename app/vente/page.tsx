@@ -1,0 +1,142 @@
+import Link from 'next/link'
+
+const CTA = () => (
+  <a
+    href="#rejoindre"
+    className="inline-block bg-[#1A1916] text-white rounded-xl px-8 py-4 text-base font-medium hover:bg-[#2d2c28] transition-colors"
+  >
+    Rejoindre l&apos;équipe
+  </a>
+)
+
+export default function VentePage() {
+  return (
+    <main className="min-h-screen bg-white" style={{ fontFamily: 'Arial, sans-serif' }}>
+
+      {/* ── Section 1 — Hero ── */}
+      <section className="px-4 py-20 flex flex-col items-center text-center">
+        <h1
+          className="font-bold text-[#1A1916] leading-tight"
+          style={{ fontSize: 'clamp(32px, 5vw, 48px)', maxWidth: 700 }}
+        >
+          Accompagnement pour gagner 1 million d&apos;euros en 20 ans.
+        </h1>
+        <p className="text-gray-400 mt-4" style={{ fontSize: 16 }}>
+          Premier mois gratuit · Ticket d&apos;entrée 2 500 €
+        </p>
+        <div className="mt-8">
+          <CTA />
+        </div>
+      </section>
+
+      {/* ── Section 2 — Vidéo + accroche ── */}
+      <section className="px-4 py-20 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-16 items-center">
+          {/* Vidéo placeholder */}
+          <div className="aspect-video bg-gray-100 rounded-2xl flex items-center justify-center">
+            {/* TODO: remplacer par <iframe> YouTube */}
+            <span className="text-gray-400 text-sm">Vidéo de présentation</span>
+          </div>
+
+          {/* Texte */}
+          <div>
+            <p
+              className="text-[#1A1916]"
+              style={{ fontSize: 18, lineHeight: 1.8 }}
+            >
+              Gagner de l&apos;argent est difficile. Cela demande d&apos;apprendre à faire une chose dont le monde a profondément besoin, et de savoir se vendre. En rejoignant notre équipe, vous apprendrez ces deux choses. Ensemble nous allons plus vite, et surtout plus loin.
+            </p>
+
+            <ul className="mt-8 space-y-3">
+              {[
+                'Stratégie d\'investissement long terme éprouvée',
+                'Accompagnement mensuel personnalisé',
+                'Accès au classement et suivi de portefeuille',
+                'Communauté de membres engagés',
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-[#1A1916]" style={{ fontSize: 16 }}>
+                  <span className="mt-0.5 font-semibold" style={{ color: '#1A7F5A' }}>✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-10">
+              <CTA />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Section 3 — L'accompagnement ── */}
+      <section className="bg-[#F7F5F0] px-4 py-20">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="font-bold text-[#1A1916] mb-12" style={{ fontSize: 32 }}>
+            Ce que vous apprenez
+          </h2>
+          <div className="space-y-10">
+            {[
+              { titre: 'Investir intelligemment' },
+              { titre: 'Construire une activité rentable' },
+              { titre: 'Développer un état d\'esprit de gagnant' },
+            ].map(({ titre }) => (
+              <div key={titre}>
+                <h3 className="font-semibold text-[#1A1916] mb-2" style={{ fontSize: 20 }}>
+                  {titre}
+                </h3>
+                <p className="text-gray-400" style={{ fontSize: 16, lineHeight: 1.7 }}>
+                  [À compléter]
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Section 4 — Témoignages ── */}
+      <section className="bg-white px-4 py-20">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="font-bold text-[#1A1916] text-center mb-12" style={{ fontSize: 32 }}>
+            Ils ont rejoint l&apos;équipe
+          </h2>
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-6">
+            {['Membre A', 'Membre B', 'Membre C'].map((prenom) => (
+              <div
+                key={prenom}
+                className="border border-gray-100 rounded-xl p-6 flex flex-col gap-3"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-gray-100 flex-shrink-0" />
+                  <span className="font-medium text-[#1A1916]">{prenom}</span>
+                </div>
+                <div className="text-yellow-400 tracking-wide text-sm">★★★★★</div>
+                <p className="text-gray-400" style={{ fontSize: 14, lineHeight: 1.6 }}>
+                  [À compléter]
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA final ── */}
+      <section id="rejoindre" className="bg-[#F7F5F0] px-4 py-20 flex flex-col items-center text-center">
+        <h2 className="font-bold text-[#1A1916] mb-6" style={{ fontSize: 32 }}>
+          Prêt à rejoindre l&apos;équipe ?
+        </h2>
+        <CTA />
+      </section>
+
+      {/* ── Footer ── */}
+      <footer className="px-4 py-10 flex justify-center">
+        <Link
+          href="/"
+          className="text-gray-400 hover:text-gray-600 transition-colors"
+          style={{ fontSize: 14 }}
+        >
+          ← Retour au classement
+        </Link>
+      </footer>
+    </main>
+  )
+}
