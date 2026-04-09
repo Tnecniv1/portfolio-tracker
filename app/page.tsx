@@ -2,6 +2,7 @@ import { supabaseAdmin } from '@/lib/supabase-server'
 import Link from 'next/link'
 
 export const dynamic = 'force-dynamic'
+export const revalidate = 0
 import { formatEuro, formatPct, colorClass } from '@/lib/format'
 
 const MEDALS = ['🥇', '🥈', '🥉']
@@ -49,6 +50,8 @@ async function getMembres() {
 export default async function ClassementPage() {
   const membres = await getMembres()
 
+  const totalProfit = membres.reduce((sum, m) => sum + (m.last_profit ?? 0), 0)
+
   const today = new Date().toLocaleDateString('fr-FR', {
     weekday: 'long',
     day: 'numeric',
@@ -63,6 +66,14 @@ export default async function ClassementPage() {
         <div className="flex items-baseline justify-between mb-8">
           <h1 className="text-2xl font-semibold tracking-tight text-gray-900">Classement</h1>
           <span className="text-sm text-gray-400 capitalize">{today}</span>
+        </div>
+
+        {/* Total profit card */}
+        <div className="flex items-center justify-between mb-5 px-5 py-3 rounded-xl border border-gray-100 bg-[#F9FAFB]">
+          <span className="text-sm text-gray-500">Profit total généré</span>
+          <span className={`text-sm font-semibold ${colorClass(totalProfit)}`}>
+            {formatEuro(totalProfit)}
+          </span>
         </div>
 
         {/* Table */}

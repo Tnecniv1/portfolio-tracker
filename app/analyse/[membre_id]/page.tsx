@@ -2,6 +2,7 @@ import { supabaseAdmin } from '@/lib/supabase-server'
 import { notFound } from 'next/navigation'
 
 export const dynamic = 'force-dynamic'
+export const revalidate = 0
 import Link from 'next/link'
 import { formatEuro, formatPct, colorClass } from '@/lib/format'
 import PortfolioChart from '@/components/PortfolioChart'
