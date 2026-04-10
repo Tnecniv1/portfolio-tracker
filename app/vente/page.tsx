@@ -19,24 +19,18 @@ export default function VentePage() {
         style={{
           minHeight: '100vh',
           backgroundImage: 'url("/hero.jpg")',
-          backgroundSize: 'contain',
-          backgroundPosition: 'center bottom',
-          backgroundRepeat: 'no-repeat',
-          backgroundColor: '#0d1a1f',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
       >
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 flex flex-col items-center gap-6">
           <h1
-            className="font-bold text-white leading-tight"
-            style={{ fontSize: 'clamp(32px, 5vw, 48px)', maxWidth: 700 }}
+            className="font-bold font-lora italic text-white leading-tight"
+            style={{ fontSize: 'clamp(24px, 3.5vw, 38px)', maxWidth: 700 }}
           >
             Accompagnement pour gagner 1 million d&apos;euros en 20 ans.
           </h1>
-          <p className="text-gray-300" style={{ fontSize: 16 }}>
-            Premier mois gratuit · Ticket d&apos;entrée 1 500 €
-          </p>
-          <CTA />
         </div>
       </section>
 

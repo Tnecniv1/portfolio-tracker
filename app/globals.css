@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.font-lora {
+  font-family: var(--font-lora), serif;
+}
+
 body {
   background: #ffffff;
   color: #111827;
