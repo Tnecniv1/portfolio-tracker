@@ -70,7 +70,7 @@ export default function VentePage() {
           <h2 className="font-bold text-[#1A1916] mb-12" style={{ fontSize: 32 }}>
             Qu&apos;est-ce que je vais gagner ?
           </h2>
-          <div className="grid grid-cols-3 gap-8 md:grid-cols-1">
+          <div className="grid grid-cols-3 gap-8 mt-10">
             {[
               { titre: 'Financer ses Besoins' },
               { titre: 'Investir son Argent' },
