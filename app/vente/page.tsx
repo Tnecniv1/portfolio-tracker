@@ -71,16 +71,16 @@ export default function VentePage() {
           </h2>
           <div className="grid grid-cols-3 gap-8 mt-10">
             {[
-              { titre: 'Financer ses Besoins' },
-              { titre: 'Investir son Argent' },
-              { titre: 'Valoriser son Temps' },
-            ].map(({ titre }) => (
+              { titre: 'Financer ses Besoins', texte: "Apprendre à gérer son argent, pour vivre au dessus de ses moyens. L'objectif est de maximiser ses revenus et de minimiser ses dépenses, en respectant les contraintes évidentes." },
+              { titre: 'Investir son Argent', texte: "Apprendre à parier sur les meilleures opportunités, pour réaliser ses rêves. L'objectif est de pouvoir financer un projet de vie qui compte pour soi, en équilibrant au mieux son risque." },
+              { titre: 'Valoriser son Temps', texte: "Apprendre à se concentrer durablement, pour devenir toujours plus intelligent. L'objectif est de se libérer progressivement des contraintes, en augmentant la quantité d'argent gagné par unité de temps." },
+            ].map(({ titre, texte }) => (
               <div key={titre} className="bg-white rounded-2xl p-8 border border-gray-100">
                 <h3 className="font-bold text-[#1A1916] mb-3" style={{ fontSize: 20 }}>
                   {titre}
                 </h3>
                 <p className="text-gray-500" style={{ fontSize: 16, lineHeight: 1.7 }}>
-                  [À compléter]
+                  {texte}
                 </p>
               </div>
             ))}
