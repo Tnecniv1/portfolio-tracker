@@ -89,7 +89,20 @@ export default function VentePage() {
         </div>
       </section>
 
-      {/* ── Section 4 — Équipe ── */}
+      {/* ── Section 4 — Texte équipe ── */}
+      <section className="py-24 bg-white">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <p className="text-2xl font-semibold text-[#0D1B2A] mb-6 font-lora">On est une équipe.</p>
+          <p className="text-lg text-[#2C3E50] leading-relaxed mb-8">
+            Chaque personne qui rejoint l&apos;aventure est choisie — ce n&apos;est pas qu&apos;une question d&apos;argent.
+          </p>
+          <p className="text-lg text-[#2C3E50] leading-relaxed">
+            Vous n&apos;achetez pas une formation bidon, mais une maison dans un village. En ce sens que vous aurez accès à toutes les ressources de la communauté, mais qu&apos;en contrepartie vous devrez trouver votre place dans cette dernière — par le travail et l&apos;amitié.
+          </p>
+        </div>
+      </section>
+
+      {/* ── Section 5 — Équipe ── */}
       <section className="bg-white px-4 py-20">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-bold text-[#0D1B2A] text-center mb-4" style={{ fontSize: 32 }}>
