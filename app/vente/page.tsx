@@ -65,25 +65,26 @@ export default function VentePage() {
 
       {/* ── Section 3 — L'accompagnement ── */}
       <section className="bg-[#F7F5F0] px-4 py-20">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h2 className="font-bold text-[#1A1916] mb-12" style={{ fontSize: 32 }}>
             Qu&apos;est-ce que je vais gagner ?
           </h2>
-          <div className="grid grid-cols-3 gap-8 mt-10">
-            {[
-              { titre: 'Financer ses Besoins', texte: "Apprendre à gérer son argent, pour vivre au dessus de ses moyens. L'objectif est de maximiser ses revenus et de minimiser ses dépenses, en respectant les contraintes évidentes." },
-              { titre: 'Investir son Argent', texte: "Apprendre à parier sur les meilleures opportunités, pour réaliser ses rêves. L'objectif est de pouvoir financer un projet de vie qui compte pour soi, en équilibrant au mieux son risque." },
-              { titre: 'Valoriser son Temps', texte: "Apprendre à se concentrer durablement, pour devenir toujours plus intelligent. L'objectif est de se libérer progressivement des contraintes, en augmentant la quantité d'argent gagné par unité de temps." },
-            ].map(({ titre, texte }) => (
-              <div key={titre} className="bg-white rounded-2xl p-8 border border-gray-100">
-                <h3 className="font-bold text-[#1A1916] mb-3" style={{ fontSize: 20 }}>
-                  {titre}
-                </h3>
-                <p className="text-gray-500" style={{ fontSize: 16, lineHeight: 1.7 }}>
-                  {texte}
-                </p>
-              </div>
-            ))}
+          <div className="grid grid-cols-3 gap-6 mt-10">
+            <div className="bg-white rounded-2xl p-10 border border-gray-100 min-h-[220px]">
+              <h3 className="font-bold text-[#1A1916] mb-3" style={{ fontSize: 20 }}>Financer ses Besoins</h3>
+              <p className="text-gray-700 text-base leading-relaxed mb-3">Apprendre à gérer son argent, pour vivre au dessus de ses moyens.</p>
+              <p className="text-gray-400 text-sm leading-relaxed">L&apos;objectif est de maximiser ses revenus et de minimiser ses dépenses, en respectant les contraintes évidentes.</p>
+            </div>
+            <div className="bg-white rounded-2xl p-10 border border-gray-100 min-h-[220px]">
+              <h3 className="font-bold text-[#1A1916] mb-3" style={{ fontSize: 20 }}>Investir son Argent</h3>
+              <p className="text-gray-700 text-base leading-relaxed mb-3">Apprendre à parier sur les meilleures opportunités, pour réaliser ses rêves.</p>
+              <p className="text-gray-400 text-sm leading-relaxed">L&apos;objectif est de pouvoir financer un projet de vie qui compte pour soi, en équilibrant au mieux son risque.</p>
+            </div>
+            <div className="bg-white rounded-2xl p-10 border border-gray-100 min-h-[220px]">
+              <h3 className="font-bold text-[#1A1916] mb-3" style={{ fontSize: 20 }}>Valoriser son Temps</h3>
+              <p className="text-gray-700 text-base leading-relaxed mb-3">Apprendre à se concentrer durablement, pour devenir toujours plus intelligent.</p>
+              <p className="text-gray-400 text-sm leading-relaxed">L&apos;objectif est de se libérer progressivement des contraintes, en augmentant la quantité d&apos;argent gagné par unité de temps.</p>
+            </div>
           </div>
         </div>
       </section>
