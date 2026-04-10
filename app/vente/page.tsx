@@ -14,18 +14,28 @@ export default function VentePage() {
     <main className="min-h-screen bg-white" style={{ fontFamily: 'Arial, sans-serif' }}>
 
       {/* ── Section 1 — Hero ── */}
-      <section className="px-4 py-20 flex flex-col items-center text-center">
-        <h1
-          className="font-bold text-[#1A1916] leading-tight"
-          style={{ fontSize: 'clamp(32px, 5vw, 48px)', maxWidth: 700 }}
-        >
-          Accompagnement pour gagner 1 million d&apos;euros en 20 ans.
-        </h1>
-        <p className="text-gray-400 mt-4" style={{ fontSize: 16 }}>
-          Premier mois gratuit · Ticket d&apos;entrée 1 500 €
-        </p>
-        <div className="mt-8">
-          <CTA />
+      <section
+        className="relative min-h-screen flex flex-col items-center justify-center text-center px-4"
+        style={{
+          backgroundImage: 'url("/hero.jpg")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative z-10">
+          <h1
+            className="font-bold text-white leading-tight"
+            style={{ fontSize: 'clamp(32px, 5vw, 48px)', maxWidth: 700 }}
+          >
+            Accompagnement pour gagner 1 million d&apos;euros en 20 ans.
+          </h1>
+          <p className="text-gray-300 mt-4" style={{ fontSize: 16 }}>
+            Premier mois gratuit · Ticket d&apos;entrée 1 500 €
+          </p>
+          <div className="mt-8">
+            <CTA />
+          </div>
         </div>
       </section>
 
@@ -42,7 +52,7 @@ export default function VentePage() {
           <div>
             <div style={{ fontSize: 18, lineHeight: 1.8 }} className="text-[#1A1916]">
               <p className="mb-4">Gagner de l&apos;argent est facile. Cela demande d&apos;apprendre à faire une chose dont le monde a profondément et sincèrement besoin, pendant une vingtaine d&apos;année.</p>
-              <p className="mb-4">Et finalement, que ce soit avec du temps ou de l&apos;argent, il s&apos;agit d&apos;investir dans l&apos;opportunité la plus rentable. Faire le bon pari, ou apprendre.</p>
+              <p className="mb-4">Et finalement, que ce soit avec du temps ou de l&apos;argent, il s&apos;agit d&apos;investir dans l&apos;opportunité la plus rentable. Faire le bon pari.</p>
               <p className="mb-4">Il n&apos;y a donc qu&apos;une seule règle dans ce monde, une petite question qui mène à tous les succès.<br />Plus un homme s&apos;investit dans cette question, plus il devient puissant. Vous devinez laquelle ?</p>
               <p className="mb-4">Qu&apos;est-ce que j&apos;ai à y gagner ?</p>
             </div>
@@ -56,18 +66,18 @@ export default function VentePage() {
 
       {/* ── Section 3 — L'accompagnement ── */}
       <section className="bg-[#F7F5F0] px-4 py-20">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <h2 className="font-bold text-[#1A1916] mb-12" style={{ fontSize: 32 }}>
-            Ce que vous apprenez
+            Qu&apos;est-ce que je vais gagner ?
           </h2>
-          <div className="space-y-10">
+          <div className="grid grid-cols-3 gap-8 md:grid-cols-1">
             {[
-              { titre: 'Investir intelligemment' },
-              { titre: 'Construire une activité rentable' },
-              { titre: 'Développer un état d\'esprit de gagnant' },
+              { titre: 'Financer ses Besoins' },
+              { titre: 'Investir son Argent' },
+              { titre: 'Valoriser son Temps' },
             ].map(({ titre }) => (
-              <div key={titre}>
-                <h3 className="font-semibold text-[#1A1916] mb-2" style={{ fontSize: 20 }}>
+              <div key={titre} className="bg-white rounded-2xl p-8 border border-gray-100">
+                <h3 className="font-bold text-[#1A1916] mb-3" style={{ fontSize: 20 }}>
                   {titre}
                 </h3>
                 <p className="text-gray-400" style={{ fontSize: 16, lineHeight: 1.7 }}>
