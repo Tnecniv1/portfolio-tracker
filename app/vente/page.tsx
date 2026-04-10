@@ -39,21 +39,20 @@ export default function VentePage() {
 
       {/* ── Section 2 — Vidéo + accroche ── */}
       <section className="px-4 py-20 max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-16 items-center">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-16 items-stretch">
           {/* Vidéo placeholder */}
-          <div className="aspect-video bg-gray-100 rounded-2xl flex items-center justify-center">
+          <div className="h-full min-h-[400px] bg-gray-100 rounded-2xl flex items-center justify-center">
             {/* TODO: remplacer par <iframe> YouTube */}
             <span className="text-gray-400 text-sm">Vidéo de présentation</span>
           </div>
 
           {/* Texte */}
           <div>
-            <div style={{ fontSize: 18, lineHeight: 1.8 }} className="text-[#1A1916]">
-              <p className="mb-4">Gagner de l&apos;argent est facile. Cela demande d&apos;apprendre à faire une chose dont le monde a profondément et sincèrement besoin, pendant une vingtaine d&apos;année.</p>
-              <p className="mb-4">Et finalement, que ce soit avec du temps ou de l&apos;argent, il s&apos;agit d&apos;investir dans l&apos;opportunité la plus rentable. Faire le bon pari.</p>
-              <p className="mb-4">Il n&apos;y a donc qu&apos;une seule règle dans ce monde, une petite question qui mène à tous les succès.<br />Plus un homme s&apos;investit dans cette question, plus il devient puissant. Vous devinez laquelle ?</p>
-              <p className="mb-4">Qu&apos;est-ce que j&apos;ai à y gagner ?</p>
-            </div>
+            <p className="mb-5 text-lg leading-relaxed text-[#1A1916]">Gagner de l&apos;argent est facile.</p>
+            <p className="mb-5 text-lg leading-relaxed text-[#1A1916]">Cela demande d&apos;apprendre à faire une chose dont le monde a profondément et sincèrement besoin, pendant une vingtaine d&apos;année.</p>
+            <p className="mb-5 text-lg leading-relaxed text-[#1A1916]">Et finalement, que ce soit avec du temps ou de l&apos;argent, il s&apos;agit d&apos;investir dans l&apos;opportunité la plus rentable. Faire le bon pari.</p>
+            <p className="mb-5 text-lg leading-relaxed text-[#1A1916]">Il n&apos;y a donc qu&apos;une seule règle dans ce monde, une petite question qui mène à tous les succès. Plus un homme s&apos;investit dans cette question, plus il devient puissant. Vous devinez laquelle ?</p>
+            <p className="mb-5 text-lg leading-relaxed text-[#1A1916] font-semibold text-xl">Qu&apos;est-ce que j&apos;ai à y gagner ?</p>
 
             <div className="mt-10">
               <CTA />
