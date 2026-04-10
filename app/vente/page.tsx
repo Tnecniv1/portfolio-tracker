@@ -22,7 +22,7 @@ export default function VentePage() {
           Accompagnement pour gagner 1 million d&apos;euros en 20 ans.
         </h1>
         <p className="text-gray-400 mt-4" style={{ fontSize: 16 }}>
-          Premier mois gratuit · Ticket d&apos;entrée 2 500 €
+          Premier mois gratuit · Ticket d&apos;entrée 1 500 €
         </p>
         <div className="mt-8">
           <CTA />
@@ -40,26 +40,12 @@ export default function VentePage() {
 
           {/* Texte */}
           <div>
-            <p
-              className="text-[#1A1916]"
-              style={{ fontSize: 18, lineHeight: 1.8 }}
-            >
-              Gagner de l&apos;argent est difficile. Cela demande d&apos;apprendre à faire une chose dont le monde a profondément besoin, et de savoir se vendre. En rejoignant notre équipe, vous apprendrez ces deux choses. Ensemble nous allons plus vite, et surtout plus loin.
-            </p>
-
-            <ul className="mt-8 space-y-3">
-              {[
-                'Stratégie d\'investissement long terme éprouvée',
-                'Accompagnement mensuel personnalisé',
-                'Accès au classement et suivi de portefeuille',
-                'Communauté de membres engagés',
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3 text-[#1A1916]" style={{ fontSize: 16 }}>
-                  <span className="mt-0.5 font-semibold" style={{ color: '#1A7F5A' }}>✓</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+            <div style={{ fontSize: 18, lineHeight: 1.8 }} className="text-[#1A1916]">
+              <p className="mb-4">Gagner de l&apos;argent est facile. Cela demande d&apos;apprendre à faire une chose dont le monde a profondément et sincèrement besoin, pendant une vingtaine d&apos;année.</p>
+              <p className="mb-4">Et finalement, que ce soit avec du temps ou de l&apos;argent, il s&apos;agit d&apos;investir dans l&apos;opportunité la plus rentable. Faire le bon pari, ou apprendre.</p>
+              <p className="mb-4">Il n&apos;y a donc qu&apos;une seule règle dans ce monde, une petite question qui mène à tous les succès.<br />Plus un homme s&apos;investit dans cette question, plus il devient puissant. Vous devinez laquelle ?</p>
+              <p className="mb-4">Qu&apos;est-ce que j&apos;ai à y gagner ?</p>
+            </div>
 
             <div className="mt-10">
               <CTA />
