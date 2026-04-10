@@ -31,7 +31,7 @@ export default function VentePage() {
             className="font-bold font-lora text-white leading-tight"
             style={{ fontSize: 'clamp(24px, 3.5vw, 38px)', maxWidth: 700 }}
           >
-            Accompagnement pour gagner 1 million d&apos;euros en 20 ans.
+            Accompagnement pour gagner 1&nbsp;million d&apos;euros en 20&nbsp;ans.
           </h1>
           <p className="text-gray-300" style={{ fontSize: 16 }}>
             Premier mois gratuit · Ticket d&apos;entrée 1 500 €
