@@ -3,7 +3,7 @@ import Link from 'next/link'
 const CTA = () => (
   <a
     href="#rejoindre"
-    className="inline-block bg-[#1A1916] text-white rounded-xl px-8 py-4 text-base font-medium hover:bg-[#2d2c28] transition-colors"
+    className="inline-block bg-white text-[#1A1916] rounded-xl px-8 py-4 text-base font-medium hover:bg-gray-100 transition-colors"
   >
     Rejoindre l&apos;équipe
   </a>
@@ -17,25 +17,23 @@ export default function VentePage() {
       <section
         className="relative min-h-screen flex flex-col items-center justify-center text-center px-4"
         style={{
-          backgroundImage: 'url("/hero.jpg")',
+          backgroundImage: 'url("https://yztoorgicssndvhhlotk.supabase.co/storage/v1/object/public/assets/696abcf4ae818a806d472eece101705b.jpg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
         <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10">
+        <div className="relative z-10 flex flex-col items-center gap-6">
           <h1
             className="font-bold text-white leading-tight"
             style={{ fontSize: 'clamp(32px, 5vw, 48px)', maxWidth: 700 }}
           >
             Accompagnement pour gagner 1 million d&apos;euros en 20 ans.
           </h1>
-          <p className="text-gray-300 mt-4" style={{ fontSize: 16 }}>
+          <p className="text-gray-300" style={{ fontSize: 16 }}>
             Premier mois gratuit · Ticket d&apos;entrée 1 500 €
           </p>
-          <div className="mt-8">
-            <CTA />
-          </div>
+          <CTA />
         </div>
       </section>
 
@@ -80,7 +78,7 @@ export default function VentePage() {
                 <h3 className="font-bold text-[#1A1916] mb-3" style={{ fontSize: 20 }}>
                   {titre}
                 </h3>
-                <p className="text-gray-400" style={{ fontSize: 16, lineHeight: 1.7 }}>
+                <p className="text-gray-500" style={{ fontSize: 16, lineHeight: 1.7 }}>
                   [À compléter]
                 </p>
               </div>
