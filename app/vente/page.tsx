@@ -11,7 +11,7 @@ const CTA = () => (
 
 export default function VentePage() {
   return (
-    <main className="min-h-screen bg-white" style={{ fontFamily: 'Arial, sans-serif' }}>
+    <main className="min-h-screen bg-white font-lora">
 
       {/* ── Section 1 — Hero ── */}
       <section
@@ -28,7 +28,7 @@ export default function VentePage() {
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 flex flex-col items-center gap-6">
           <h1
-            className="font-bold font-lora italic text-white leading-tight"
+            className="font-bold font-lora text-white leading-tight"
             style={{ fontSize: 'clamp(24px, 3.5vw, 38px)', maxWidth: 700 }}
           >
             Accompagnement pour gagner 1 million d&apos;euros en 20 ans.
