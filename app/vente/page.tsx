@@ -19,8 +19,10 @@ export default function VentePage() {
         style={{
           minHeight: '100vh',
           backgroundImage: 'url("/hero.jpg")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundSize: 'contain',
+          backgroundPosition: 'center bottom',
+          backgroundRepeat: 'no-repeat',
+          backgroundColor: '#0d1a1f',
         }}
       >
         <div className="absolute inset-0 bg-black/50" />
@@ -31,6 +33,9 @@ export default function VentePage() {
           >
             Accompagnement pour gagner 1 million d&apos;euros en 20 ans.
           </h1>
+          <p className="text-gray-300" style={{ fontSize: 16 }}>
+            Premier mois gratuit · Ticket d&apos;entrée 1 500 €
+          </p>
         </div>
       </section>
 
