@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -o public/hero.jpg \"https://yztoorgicssndvhhlotk.supabase.co/storage/v1/object/public/assets/696abcf4ae818a806d472eece101705b.jpg\")",
+      "Bash(curl -o \"C:\\\\Users\\\\vince\\\\Desktop\\\\Fidess\\\\portfolio-tracker\\\\public\\\\hero.jpg\" \"https://yztoorgicssndvhhlotk.supabase.co/storage/v1/object/public/assets/696abcf4ae818a806d472eece101705b.jpg\")"
+    ]
+  }
+}

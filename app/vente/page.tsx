@@ -15,11 +15,14 @@ export default function VentePage() {
 
       {/* ── Section 1 — Hero ── */}
       <section
-        className="relative min-h-screen flex flex-col items-center justify-center text-center px-4"
+        className="relative flex flex-col items-center justify-center text-center px-4"
         style={{
-          backgroundImage: 'url("https://yztoorgicssndvhhlotk.supabase.co/storage/v1/object/public/assets/696abcf4ae818a806d472eece101705b.jpg")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          minHeight: '100vh',
+          backgroundImage: 'url("/hero.jpg")',
+          backgroundSize: 'contain',
+          backgroundPosition: 'center bottom',
+          backgroundRepeat: 'no-repeat',
+          backgroundColor: '#0d1a1f',
         }}
       >
         <div className="absolute inset-0 bg-black/50" />
@@ -52,7 +55,7 @@ export default function VentePage() {
             <p className="mb-5 text-lg leading-relaxed text-[#1A1916]">Cela demande d&apos;apprendre à faire une chose dont le monde a profondément et sincèrement besoin, pendant une vingtaine d&apos;année.</p>
             <p className="mb-5 text-lg leading-relaxed text-[#1A1916]">Et finalement, que ce soit avec du temps ou de l&apos;argent, il s&apos;agit d&apos;investir dans l&apos;opportunité la plus rentable. Faire le bon pari.</p>
             <p className="mb-5 text-lg leading-relaxed text-[#1A1916]">Il n&apos;y a donc qu&apos;une seule règle dans ce monde, une petite question qui mène à tous les succès. Plus un homme s&apos;investit dans cette question, plus il devient puissant. Vous devinez laquelle ?</p>
-            <p className="mb-5 text-lg leading-relaxed text-[#1A1916] font-semibold text-xl">Qu&apos;est-ce que j&apos;ai à y gagner ?</p>
+            <p className="mb-5 text-xl font-semibold text-[#1A1916]">Qu&apos;est-ce que j&apos;ai à y gagner ?</p>
 
             <div className="mt-10">
               <CTA />
