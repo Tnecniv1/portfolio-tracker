@@ -13,6 +13,8 @@ interface Membre {
 interface FluxRow {
   id: string
   moment: string
+  montant_investit: number | null
+  montant_global_investit: number | null
   capital_investit: number
   valeur_ptf: number | null
   profit: number | null
@@ -33,7 +35,7 @@ export default function SaisieClient({ membres, authenticated }: Props) {
 
   const [selectedMembre, setSelectedMembre] = useState('')
   const [moment, setMoment] = useState('')
-  const [capitalInvesti, setCapitalInvesti] = useState('')
+  const [montantInvesti, setMontantInvesti] = useState('')
   const [valeurPtf, setValeurPtf] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [statusMsg, setStatusMsg] = useState('')
@@ -86,7 +88,7 @@ export default function SaisieClient({ membres, authenticated }: Props) {
       body: JSON.stringify({
         membre_id: selectedMembre,
         moment,
-        capital_investit: Number(capitalInvesti),
+        montant_investit: Number(montantInvesti),
         valeur_ptf: valeurPtf ? Number(valeurPtf) : null,
       }),
     })
@@ -95,7 +97,7 @@ export default function SaisieClient({ membres, authenticated }: Props) {
       setStatus('success')
       setStatusMsg('Flux ajouté avec succès.')
       setMoment('')
-      setCapitalInvesti('')
+      setMontantInvesti('')
       setValeurPtf('')
       await loadRecentFlux(selectedMembre)
     } else {
@@ -199,13 +201,13 @@ export default function SaisieClient({ membres, authenticated }: Props) {
               />
             </div>
             <div>
-              <label className="block text-xs text-gray-500 mb-1.5">Capital investi (€)</label>
+              <label className="block text-xs text-gray-500 mb-1.5">Dépôt du mois €</label>
               <input
                 type="number"
                 step="0.01"
-                placeholder="1000"
-                value={capitalInvesti}
-                onChange={(e) => setCapitalInvesti(e.target.value)}
+                placeholder="200"
+                value={montantInvesti}
+                onChange={(e) => setMontantInvesti(e.target.value)}
                 className="w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-gray-400 transition"
                 required
               />
@@ -222,6 +224,15 @@ export default function SaisieClient({ membres, authenticated }: Props) {
               />
             </div>
           </div>
+
+          {recentFlux.length > 0 && (
+            <p className="text-xs text-gray-400">
+              Capital total :{' '}
+              <span className="font-medium text-gray-700">
+                {formatEuro((recentFlux[0].montant_global_investit ?? recentFlux[0].capital_investit) + (montantInvesti ? Number(montantInvesti) : 0))}
+              </span>
+            </p>
+          )}
 
           <button
             type="submit"
@@ -247,7 +258,7 @@ export default function SaisieClient({ membres, authenticated }: Props) {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-gray-100">
-                    {['Moment', 'Capital', 'Valeur ptf', 'Profit', 'ROI', 'TWR'].map((h) => (
+                    {['Moment', 'Dépôt', 'Total investi', 'Valeur ptf', 'Profit', 'ROI', 'TWR'].map((h) => (
                       <th key={h} className="px-4 py-2.5 text-left text-xs font-medium text-gray-400">
                         {h}
                       </th>
@@ -258,7 +269,8 @@ export default function SaisieClient({ membres, authenticated }: Props) {
                   {recentFlux.map((row, i) => (
                     <tr key={row.id} className={`border-b border-gray-50 ${i % 2 === 0 ? 'bg-white' : 'bg-[#FAFAF8]'}`}>
                       <td className="px-4 py-2.5 font-medium text-gray-700">{row.moment}</td>
-                      <td className="px-4 py-2.5 text-gray-600">{formatEuro(row.capital_investit)}</td>
+                      <td className="px-4 py-2.5 text-gray-600">{formatEuro(row.montant_investit)}</td>
+                      <td className="px-4 py-2.5 text-gray-600">{formatEuro(row.montant_global_investit ?? row.capital_investit)}</td>
                       <td className="px-4 py-2.5 text-gray-600">{row.valeur_ptf != null ? formatEuro(row.valeur_ptf) : '—'}</td>
                       <td className={`px-4 py-2.5 font-medium ${colorClass(row.profit)}`}>{formatEuro(row.profit)}</td>
                       <td className={`px-4 py-2.5 font-medium ${colorClass(row.roi)}`}>{formatPct(row.roi)}</td>

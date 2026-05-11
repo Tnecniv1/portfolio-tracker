@@ -17,7 +17,7 @@ async function getFlux(id: string) {
     .from('flux_capital')
     .select('*')
     .eq('membre_id', id)
-    .order('created_at', { ascending: true })
+    .order('montant_global_investit', { ascending: true })
   return data ?? []
 }
 
@@ -80,7 +80,7 @@ export default async function AnalysePage({ params }: { params: { membre_id: str
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-gray-100">
-                {['#', 'Moment', 'Capital investi', 'Valeur ptf', 'Profit', 'ROI', 'TWR'].map((h) => (
+                {['#', 'Moment', 'Dépôt', 'Total investi', 'Valeur ptf', 'Profit', 'ROI', 'TWR'].map((h) => (
                   <th
                     key={h}
                     className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider last:text-right"
@@ -98,7 +98,8 @@ export default async function AnalysePage({ params }: { params: { membre_id: str
                 >
                   <td className="px-4 py-3 text-gray-400">{i + 1}</td>
                   <td className="px-4 py-3 font-medium text-gray-700">{row.moment}</td>
-                  <td className="px-4 py-3 text-gray-700">{formatEuro(row.capital_investit)}</td>
+                  <td className="px-4 py-3 text-gray-700">{formatEuro(row.montant_investit)}</td>
+                  <td className="px-4 py-3 text-gray-700">{formatEuro(row.montant_global_investit)}</td>
                   <td className="px-4 py-3 text-gray-700">
                     {row.valeur_ptf != null ? formatEuro(row.valeur_ptf) : '—'}
                   </td>

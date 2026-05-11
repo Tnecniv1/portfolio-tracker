@@ -6,26 +6,34 @@ import { computeFlux } from '@/lib/calculations'
 
 export async function POST(req: NextRequest) {
   const body = await req.json()
-  const { membre_id, moment, capital_investit, valeur_ptf } = body
+  const { membre_id, moment, montant_investit, valeur_ptf } = body
 
-  if (!membre_id || !moment || capital_investit == null) {
+  if (!membre_id || !moment || montant_investit == null) {
     return NextResponse.json({ error: 'Champs manquants' }, { status: 400 })
   }
 
-  // Fetch existing flux for this member (ordered by created_at)
+  // Fetch existing flux for this member (ordered by montant_global_investit)
   const { data: existing, error: fetchError } = await supabaseAdmin
     .from('flux_capital')
     .select('*')
     .eq('membre_id', membre_id)
-    .order('created_at', { ascending: true })
+    .order('montant_global_investit', { ascending: true })
 
   if (fetchError) return NextResponse.json({ error: fetchError.message }, { status: 500 })
+
+  // Compute new montant_global_investit
+  const lastRow = existing && existing.length > 0 ? existing[existing.length - 1] : null
+  const montantInvesti = Number(montant_investit)
+  const montantGlobalInvesti = (lastRow?.montant_global_investit ?? 0) + montantInvesti
+  const capitalInvesti = montantGlobalInvesti
 
   // Append new row (without computed fields yet)
   const newRow = {
     membre_id,
     moment,
-    capital_investit: Number(capital_investit),
+    montant_investit: montantInvesti,
+    montant_global_investit: montantGlobalInvesti,
+    capital_investit: capitalInvesti,
     valeur_ptf: valeur_ptf != null ? Number(valeur_ptf) : null,
     profit: null,
     roi: null,
@@ -42,6 +50,8 @@ export async function POST(req: NextRequest) {
     .insert({
       membre_id: lastComputed.membre_id,
       moment: lastComputed.moment,
+      montant_investit: montantInvesti,
+      montant_global_investit: montantGlobalInvesti,
       capital_investit: lastComputed.capital_investit,
       valeur_ptf: lastComputed.valeur_ptf,
       profit: lastComputed.profit,
@@ -58,7 +68,7 @@ export async function POST(req: NextRequest) {
     .from('flux_capital')
     .select('*')
     .eq('membre_id', membre_id)
-    .order('created_at', { ascending: true })
+    .order('montant_global_investit', { ascending: true })
 
   const recomputed = computeFlux(allFlux ?? [])
 

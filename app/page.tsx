@@ -30,8 +30,7 @@ async function getMembres() {
         .select('twr, profit, roi, valeur_ptf, moment')
         .eq('membre_id', m.id)
         .not('valeur_ptf', 'is', null)
-        .order('capital_investit', { ascending: false })
-        .order('created_at', { ascending: false })
+        .order('montant_global_investit', { ascending: false })
         .limit(1)
 
       const { data: first } = await supabaseAdmin
@@ -43,9 +42,9 @@ async function getMembres() {
 
       const { data: lastFlux } = await supabaseAdmin
         .from('flux_capital')
-        .select('capital_investit')
+        .select('montant_global_investit, capital_investit')
         .eq('membre_id', m.id)
-        .order('capital_investit', { ascending: false })
+        .order('montant_global_investit', { ascending: false })
         .limit(1)
 
       const last = flux?.[0] ?? null
@@ -55,7 +54,7 @@ async function getMembres() {
         last_profit: last?.profit ?? null,
         last_roi: last?.roi ?? null,
         depuis_moment: first?.[0]?.moment ?? null,
-        last_capital: lastFlux?.[0]?.capital_investit ?? 0,
+        last_capital: lastFlux?.[0]?.montant_global_investit ?? lastFlux?.[0]?.capital_investit ?? 0,
       }
     })
   )
